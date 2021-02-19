@@ -1,8 +1,8 @@
 
-
-  Array.prototype.myEach = function(callback){
-    for (let i = 0; i < this.length; i++){
-       callback(this[i],i, this);
+Array.prototype.myEach = function myEach(callback) {
+    for (let i = 0; i < this.length; i ++) {
+      callback(this[i], i, this);
     }
-    return undefined;
 };
+  
+ 

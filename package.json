@@ -1,0 +1,29 @@
+{
+  "name": "js-4-n00bs",
+  "version": "1.0.0",
+  "description": "![JS For Dummies](https://images-na.ssl-images-amazon.com/images/I/51y+YhtJz-L._SX322_BO1,204,203,200_.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "file": "babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Web-Dev-Speedrunners/js-4-n00bs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Web-Dev-Speedrunners/js-4-n00bs/issues"
+  },
+  "homepage": "https://github.com/Web-Dev-Speedrunners/js-4-n00bs#readme",
+  "devDependencies": {
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/node": "^7.12.17",
+    "@babel/preset-env": "^7.12.17"
+  }
+}

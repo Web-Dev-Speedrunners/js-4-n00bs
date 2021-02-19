@@ -1,0 +1,21 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.1.0
+jobs:
+  sanity_check:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          app-dir: ~/project
+          cache-path: ~/project/node_modules
+          pkg-manager: yarn
+      - run:
+          working_directory: ~/project
+          command: npm run test
+          name: Run Tests
+
+workflows:
+  big_brain_workflow:
+    jobs:
+      - sanity_check

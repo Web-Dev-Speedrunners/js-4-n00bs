@@ -4,8 +4,8 @@ Array.prototype.myPush = function(elementToAdd) {
     return this.length;
  };
    
- /*
- Tests
+ 
+/*
  const arr = [1,2, 3, 4, 7, 8];
  const elementToAdd = 6;
 

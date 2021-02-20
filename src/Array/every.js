@@ -10,5 +10,4 @@ Array.prototype.myEvery = function(callback, input) {
 const arr = [1,2, 3, 4];
 const isBelowThreshold = (currentValue) => currentValue < 11;
 console.log(arr.myEvery(isBelowThreshold));
-
 */

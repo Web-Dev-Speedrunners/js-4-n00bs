@@ -6,3 +6,9 @@ Array.prototype.myEvery = function(callback, input) {
     return true;
 };
 
+/*
+const arr = [1,2, 3, 4];
+const isBelowThreshold = (currentValue) => currentValue < 11;
+console.log(arr.myEvery(isBelowThreshold));
+
+*/

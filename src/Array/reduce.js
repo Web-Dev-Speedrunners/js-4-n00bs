@@ -1,5 +1,3 @@
-import { run } from "jest-cli";
-
 /**
  * Returns ther resulting from the repeated application of the callback across a
  * sliding window of the array.
@@ -15,7 +13,7 @@ Array.prototype.myReduce = function (callback, initialValue) {
   if (this.length == 0) {
     return initialValue;
   }
-  let runningValue = initialValue ? initialValue + this[0] : this[0];
+  let runningValue = initialValue ? callback(initialValue, this[0]) : this[0];
   for (let i = 1; i < this.length; i++) {
     runningValue = callback(runningValue, this[i]);
   }

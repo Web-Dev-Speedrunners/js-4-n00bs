@@ -85,10 +85,17 @@ describe("Test some() function", () => {
   })
 
   it("Able to ignore undefined", () => {
-    const testArr = [,,,,,]
-    const isNaN = x => x === NaN
+    const testArr = [,,,,,2]
+    const isEven = x => x % 2 === 0
+    const expectedRes = testArr.some(isEven)
+    expect(testArr.mySome(isEven)).toEqual(expectedRes) // False
+  })
+
+  it("Able to test for NaN", () => {
+    const testArr = [, 2, 3, 4, 5, NaN]
+    const res = testArr.mySome(isNaN)
     const expectedRes = testArr.some(isNaN)
-    expect(testArr.mySome(isNaN)).toEqual(expectedRes) // False
+    expect(res).toEqual(expectedRes)
   })
 })
 
@@ -116,6 +123,14 @@ describe("Test indexOf() function", () => {
     let res = testArr.myIndexOf(search, startIndex)
     let expectedRes = testArr.indexOf(search, startIndex)
     expect(res).toEqual(expectedRes) 
+  })
+
+  it("Test NaN values", () => {
+    const testArr = [1, 2, 3, NaN]
+    const search = NaN
+    const res = testArr.myIndexOf(search)
+    const expectedRes = testArr.indexOf(search)
+    expect(res).toEqual(expectedRes)
   })
 })
 

@@ -72,6 +72,111 @@ describe("Test includes() function", () => {
     expect(testArr.myIncludes(3, -1)).toEqual(true)
     expect(testArr.myIncludes(3, -100)).toEqual(true)
     expect(testArr.myIncludes(1, -2)).toEqual(false)
+  }) 
+})
+
+
+describe("Test some() function", () => {
+  it("Able to pass test using given function", () => {
+    const testArr = [1, 2, 3, 5, NaN]
+    const isEven = x => x % 2 === 0
+    const expectedRes = testArr.some(isEven)
+    expect(testArr.mySome(isEven)).toEqual(expectedRes) // True
+  })
+
+  it("Able to ignore undefined", () => {
+    const testArr = [,,,,,2]
+    const isEven = x => x % 2 === 0
+    const expectedRes = testArr.some(isEven)
+    expect(testArr.mySome(isEven)).toEqual(expectedRes) // False
+  })
+
+  it("Able to test for NaN", () => {
+    const testArr = [, 2, 3, 4, 5, NaN]
+    const res = testArr.mySome(isNaN)
+    const expectedRes = testArr.some(isNaN)
+    expect(res).toEqual(expectedRes)
+  })
+})
+
+describe("Test indexOf() function", () => {
+  it("Tests indexOf on different starting index", () => {
+    const testArr = ['ant', 'bison', 'camel', 'duck', 'bison']
+    let search = 'bison'
+
+    let startIndex = 0
+    let res = testArr.myIndexOf(search, startIndex)
+    let expectedRes = testArr.indexOf(search, startIndex)
+    expect(res).toEqual(expectedRes) 
+
+    startIndex = 2
+    res = testArr.myIndexOf(search, startIndex)
+    expectedRes = testArr.indexOf(search, startIndex)
+    expect(res).toEqual(expectedRes) 
+  })
+
+  it("Tests out of bounds", () => {
+    const testArr = [ 1, 2, 3, 4]
+    let search = 4
+    let startIndex = 5
+
+    let res = testArr.myIndexOf(search, startIndex)
+    let expectedRes = testArr.indexOf(search, startIndex)
+    expect(res).toEqual(expectedRes) 
+  })
+
+  it("Test NaN values", () => {
+    const testArr = [1, 2, 3, NaN]
+    const search = NaN
+    const res = testArr.myIndexOf(search)
+    const expectedRes = testArr.indexOf(search)
+    expect(res).toEqual(expectedRes)
+  })
+})
+
+describe("Test Object.values() function", () => {
+  it("Tests on different datatypes (number, array, objects, undefined)", () => {
+    const objCollection = {
+      number: 777,
+      array: ['a', 'b', 'c', 'd', ],
+      object: {
+        a: 0,
+        b: 1,
+        c: 2,
+      }
+    }
+
+    for (const key in objCollection) {
+      if (Object.hasOwnProperty.call(objCollection, key)) {
+        const element = objCollection[key]
+        const res = Object.grabValues(element)
+        const expectedRes = Object.values(element)
+        expect(res).toEqual(expectedRes)
+      }
+    }
+    
+  })
+
+  it("Tests on edge case values", () => {
+    const objCollection = {
+      nan: NaN,
+      array: [,,,]
+    }
+
+    for (const key in objCollection) {
+      if (Object.hasOwnProperty.call(objCollection, key)) {
+        const element = objCollection[key];
+        const res = Object.grabValues(element)
+        const expectedRes = Object.values(element)
+        expect(res).toEqual(expectedRes)
+      }
+    }
+  })
+
+  it("Test for undefined", () => {
+    const invalidVal = undefined
+    expect( () => {Object.values(invalidVal)}).toThrow(new TypeError("Cannot convert undefined or null to object"))
+    expect( () => {Object.grabValues(invalidVal)} ).toThrow(new Error("Cannot convert undefined or null to object"))
   })
 })
 

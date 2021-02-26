@@ -179,3 +179,41 @@ describe("Test Object.values() function", () => {
     expect( () => {Object.grabValues(invalidVal)} ).toThrow(new Error("Cannot convert undefined or null to object"))
   })
 })
+
+
+
+
+describe("Test every() function", () => {
+  it("Able to pass test using given function", () => {
+    const testArr = [1, 2, 3, 5]
+    const isLess = x => x < 6 === 0
+    const expectedRes = testArr.myEvery(isLess)
+    expect(testArr.myEvery(isLess)).toEqual(expectedRes) // True
+  })
+
+  it("Another check", () => {
+    const testArr = [1, 2, 3, 5]
+    const isGreater = x => x > 6 === 1
+    const expectedRes = testArr.myEvery(isGreater)
+    expect(testArr.myEvery(isGreater)).toEqual(expectedRes) // false
+  })
+})
+
+
+
+describe("Test Array.myPush()", () => {
+ 
+  it("Able to pass test using given function", () => {
+    const inputArray = [1, 2, 3, 4];
+    expect(inputArray.myPush(6)).toEqual(5)
+  })
+
+  it("Count of element", () => {
+    const inputArray = [1, 2, 3, 4, 6, 7];
+    expect(inputArray.myPush(10)).toEqual(7)
+  })
+
+})
+
+
+

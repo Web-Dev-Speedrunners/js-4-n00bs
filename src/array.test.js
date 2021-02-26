@@ -216,4 +216,67 @@ describe("Test Array.myPush()", () => {
 })
 
 
+describe("Test Array.myMap()", () => {
+  it("Maps function on array", () => {
+    const inputArray = [1, 2, 3, 4]
+    const isEven = (index) => index % 2 == 0
+    const expectedArr = [false, true, false, true]
+    expect(inputArray.myMap(isEven)).toEqual(expectedArr)
+  })
 
+  it("Correctly passes index", () => {
+    const inputArray = [0, 0, 0, 0]
+    const expectedArr = [0, 1, 2, 3]
+    const toIndex = (_, i) => i
+    expect(inputArray.myMap(toIndex)).toEqual(expectedArr)
+  })
+
+})
+
+describe("Test Array.myReduce()", () => {
+  it("Reduces with no params", () => {
+    const inputArray = [1, 2, 3, 4];
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    expect(inputArray.myReduce(reducer)).toEqual(10)
+  })
+
+  it("Reduces with one param", () => {
+    const inputArray = [1, 2, 3, 4];
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    expect(inputArray.myReduce(reducer, 4)).toEqual(14)
+  })
+
+  it("Reduces subtraction with one param", () => {
+    const reducer = (accumulator, currentValue) => accumulator - currentValue;
+    const myResult = [1, 2, 3, 4].myReduce(reducer, 4)
+    const expectedResult = [1, 2, 3, 4].reduce(reducer, 4)
+    expect(myResult).toEqual(expectedResult)
+  })
+
+  it("Reduces with empty array one param", () => {
+    const reducer = (accumulator, currentValue) => accumulator - currentValue;
+    const myResult = [].myReduce(reducer, 4)
+    const expectedResult = [].reduce(reducer, 4)
+    expect(myResult).toEqual(expectedResult)
+  })
+})
+
+describe("Test Array.lastIndexOf()", () => {
+  it("Gets last index of item at end", () => {
+    const inputArray = [1, 2, 3, 4];
+    expect(inputArray.myLastIndexOf(4)).toEqual(3)
+  })
+  it("Gets last index of item in middle", () => {
+    const inputArray = [1, 2, 3, 4];
+    expect(inputArray.myLastIndexOf(3)).toEqual(2)
+  })
+  it("Gets last index first item", () => {
+    const inputArray = [1, 2, 3, 4];
+    expect(inputArray.myLastIndexOf(1)).toEqual(0)
+  })
+
+  it("Return -1 if not found", () => {
+    const inputArray = [1, 2, 3, 4];
+    expect(inputArray.myLastIndexOf(-1)).toEqual(-1)
+  })
+})
